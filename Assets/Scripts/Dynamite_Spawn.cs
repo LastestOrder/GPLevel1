@@ -6,7 +6,7 @@ public class Dynamite_Spawn : MonoBehaviour
 {
     public GameObject _dynamite; //Объект динамит
     public Transform _dynamiteSpawnPalce; //Место в котором будет появляться динамит
-    private int count = 0;
+    public int count = 0;
 
     // Start is called before the first frame update
 
