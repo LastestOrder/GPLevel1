@@ -13,11 +13,15 @@ public class Destroy_Dynamite : MonoBehaviour
         if (temp.tag == "Player")
         {
            Destroy(gameObject, 0f);
-            Dynamite_Spawn dynamite_Spawn = _spawn.GetComponent<Dynamite_Spawn>();
-            dynamite_Spawn.count -= 1;
-            //Dynamite_Lenon dynamite_Lenon = _Lemon.GetComponent<Dynamite_Lenon>();
+            
         }
 
+       
+        if (temp.tag == "MoveBlock")
+        {
+            Destroy(gameObject);
+            
+        }
     }
 
 

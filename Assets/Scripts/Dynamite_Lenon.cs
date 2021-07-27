@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Dynamite_Lenon : MonoBehaviour
 {
-    public GameObject _dynamite; //Объект динамит
-    public Transform _dynamiteSpawnPalce; //Место в котором будет появляться динамит
-    public Transform[] _Lemon;
-
+    public GameObject _Dynamite; //Объект динамит
+        
     public int count_dyna = 0;
 
     // Start is called before the first frame update
@@ -21,6 +19,19 @@ public class Dynamite_Lenon : MonoBehaviour
         }
     }
 
-    
+    private void Update()
+    {
+        if (count_dyna>0)
+        {
+            _Dynamite.SetActive(true);
+        }
+
+        if (count_dyna == 0)
+        {
+            _Dynamite.SetActive(false);
+        }
+    }
+
+
 }
 

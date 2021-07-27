@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dynamite
+  - MoveBlock
   layers:
   - Default
   - TransparentFX
