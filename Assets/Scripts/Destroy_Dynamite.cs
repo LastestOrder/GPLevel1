@@ -24,6 +24,4 @@ public class Destroy_Dynamite : MonoBehaviour
         }
     }
 
-
-
 }
