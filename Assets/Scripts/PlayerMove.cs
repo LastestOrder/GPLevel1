@@ -11,7 +11,8 @@ public class PlayerMove : MonoBehaviour
     public Transform _dynamitPoint;
     public Rigidbody _dynamiteRB;
     public int Force=3;
-
+    public Vector3 _startPos;
+    public float _step = 0.02f;
     public float turnSpeed = 20f;
 
     Animator m_Animator;
@@ -73,4 +74,32 @@ public class PlayerMove : MonoBehaviour
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
         m_Rigidbody.MoveRotation(m_Rotation);
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    GameObject temp = collision.gameObject;
+    //    if (temp.tag == "MoveBlock")
+    //    {
+    //        Debug.Log("Enter");
+    //        temp.GetComponent<Rigidbody>().isKinematic = false;
+            
+    //        if (Input.GetKeyDown(KeyCode.S))
+    //        {
+    //            temp.transform.position = Vector3.Lerp(_startPos, _Lemon.transform.position, 0.02f);
+    //        }
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    GameObject temp = collision.gameObject;
+    //    if (temp.tag == "MoveBlock" && Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        temp.GetComponent<Rigidbody>().isKinematic = true;
+    //        //if (Input.GetKeyDown(KeyCode.S))
+    //        //{ && Input.GetKeyDown(KeyCode.V)
+    //        //    temp.transform.Translate(-Vector3.forward - m_Movement * Time.deltaTime);
+    //        //}
+    //    }
+    //}
 }

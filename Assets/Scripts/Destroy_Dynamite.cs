@@ -5,23 +5,27 @@ using UnityEngine;
 public class Destroy_Dynamite : MonoBehaviour
 {
     public GameObject _spawn;
+    public Spawner _spawner;
 
-    // Start is called before the first frame update
+   
     private void OnCollisionEnter(Collision collision)
     {
+        Spawner spawner = _spawn.GetComponent<Spawner>();
+
         GameObject temp = collision.gameObject;
-        if (temp.tag == "Player")
-        {
+        if (temp.tag == "Player" )
+        {           
            Destroy(gameObject, 0f);
-            
+           spawner._dynamitCount = _spawner._dynamitCount - 1;
         }
 
-       
         if (temp.tag == "MoveBlock")
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0f);
             
         }
+        
     }
+   
 
 }

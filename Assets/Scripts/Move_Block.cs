@@ -9,14 +9,14 @@ public class Move_Block : MonoBehaviour
         if (collision.gameObject.CompareTag("Dynamite"))
         {
             Destroy(gameObject, 0f);
-            
+
         }
-        if (collision.gameObject.CompareTag("MoveBlock"))
-        {
-            Destroy(gameObject, 0f);
-            //Dynamite_Spawn dynamite_Spawn = _spawn.GetComponent<Dynamite_Spawn>();
-            //dynamite_Spawn.count -= 1;
-            //Dynamite_Lenon dynamite_Lenon = _Lemon.GetComponent<Dynamite_Lenon>();
-        }
+        //if (collision.gameObject.CompareTag("MoveBlock"))
+        //{
+        //    Destroy(gameObject, 0f);
+        //    //Dynamite_Spawn dynamite_Spawn = _spawn.GetComponent<Dynamite_Spawn>();
+        //    //dynamite_Spawn.count -= 1;
+        //    //Dynamite_Lenon dynamite_Lenon = _Lemon.GetComponent<Dynamite_Lenon>();
+        //}
     }
 }
