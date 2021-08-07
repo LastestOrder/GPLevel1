@@ -6,6 +6,7 @@ public class Destroy_Dynamite : MonoBehaviour
 {
     public GameObject _spawn;
     public Spawner _spawner;
+    public GameObject _Explosion;
 
    
     private void OnCollisionEnter(Collision collision)
@@ -22,7 +23,7 @@ public class Destroy_Dynamite : MonoBehaviour
         if (temp.tag == "MoveBlock")
         {
             Destroy(gameObject, 0f);
-            
+            Instantiate(_Explosion, transform.position, Quaternion.identity);
         }
         
     }

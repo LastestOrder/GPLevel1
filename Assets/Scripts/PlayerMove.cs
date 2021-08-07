@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -14,12 +16,27 @@ public class PlayerMove : MonoBehaviour
     public Vector3 _startPos;
     public float _step = 0.02f;
     public float turnSpeed = 20f;
+    public Text _PlayerName;
+    public Camera _mainCamera;
+    public Vector3 _direction;
+    public int _Health = 100;
+    public int _Lives = 3;
+    public Panel _panel;
+
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
+
+    private void Awake()
+    {
+        _PlayerName.text = PlayerPrefs.GetString("PlayerName");
+        _mainCamera = Camera.main;
+        _panel = FindObjectOfType<Panel>();
+
+    }
 
     private void Start()
     {
@@ -29,15 +46,36 @@ public class PlayerMove : MonoBehaviour
     }
     private void Update()
     {
-               
+        RaycastHit _hit;
+        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out _hit))
+        {
+            _direction = _hit.transform.position - transform.position;
+
+        }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(_direction), 10 * Time.deltaTime);
         Dynamite_Lenon dynamite_Lenon = _Lemon.GetComponent<Dynamite_Lenon>();
-        if (dynamite_Lenon.count_dyna!=0 && Input.GetKeyDown(KeyCode.G))
+        if (dynamite_Lenon.count_dyna >= 0 && Input.GetMouseButton(0))
         {
             GameObject temp = Instantiate(_dynamite, _dynamitPoint.position, Quaternion.identity);
             temp.name = "dynamite";
             _dynamiteRB = temp.GetComponent<Rigidbody>();
-            _dynamiteRB.AddForce(Vector3.forward * Force, ForceMode.Impulse);
+            
+            _dynamiteRB.AddForce(_direction.normalized * Force, ForceMode.Impulse);
             dynamite_Lenon.count_dyna -= 1;
+        }
+
+        if (_Health <= 0)
+        {
+            _Lives--;
+            _panel.Refresh();
+            _Health = 100;
+
+        }
+        if (_Lives <= 0)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

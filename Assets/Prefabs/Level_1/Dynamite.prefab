@@ -356,6 +356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawn: {fileID: 3925785836053849093, guid: bf26bbf982b2b084a8f5c45860bbdd48, type: 3}
   _spawner: {fileID: 0}
+  _Explosion: {fileID: 6139401252992687551, guid: f5143e3727da6974cb801fdb6eb855ae,
+    type: 3}
 --- !u!135 &9138377142688711393
 SphereCollider:
   m_ObjectHideFlags: 0
